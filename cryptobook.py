@@ -17,9 +17,9 @@ class MissingCharacterException(Exception):
 
 
 @click.command()
-@click.argument('book', type=click.File('r'))
-@click.argument('input', type=click.File('r'))
-@click.argument('output', type=click.Path(exists=False))
+@click.option('--book', '-b', type=click.File('r'), help='The book used to do the encryption')
+@click.option('--input', '-i', type=click.File('r'), help='The message to be encrypted or decrypted')
+@click.argument('--output', '-o', type=click.Path(exists=False), help="The output file where the encrypted or decrypted message is saved")
 @click.option('--encrypt', is_flag=True)
 @click.option('--decrypt', is_flag=True)
 def cryptobook(book, input, output, encrypt, decrypt):
